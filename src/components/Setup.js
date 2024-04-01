@@ -16,6 +16,7 @@ export default function Setup() {
     const [rightImg, setRightImg] = useState(null);
     const [photoImgs, setPhotoImgs] = useState([]);
     const [videos, setVideos] = useState([]);
+    const [videoTitle, setVideoTitle] = useState("");
     const [testimonials, setTestimonials] = useState([{text:'', author:''}])
     const [post, setPost] = useState({title:'', text:'', replies:[{text:'', author:''}]})
 
@@ -43,7 +44,7 @@ export default function Setup() {
       
       const uploadVideos = (e) => {
         e.preventDefault()
-        handleMultipleUpload(videos, 'videos')
+        handleMultipleUpload(videos, 'videos', videoTitle)
       }
 
     const handleChangeText = ( e, i) => {
@@ -321,7 +322,9 @@ export default function Setup() {
                             style={{padding:'15px', color:'#fff', 
                             borderRadius:'5px', background:"blue"}}
                             >Upload Images</button>
-<br/><br/>
+                            
+                            <br/><br/>
+
                             <Typography variant='h5' className="banner-title">Photo Gallery</Typography>
                             
                             <Box sx={{display:'flex', background:'#fff', padding:'20px',  
@@ -331,7 +334,9 @@ export default function Setup() {
                                     siteData.gallery.map((imgUrl, index) => (
                                         <Box key={index}>
                                             <button style={{padding:'5px', color:'#fff', borderRadius:'5px', background:"red"}}
-                                            onClick={(e)=>removeImg(e, index)}>delete</button>
+                                                onClick={(e)=>removeImg(e, index)}>
+                                                    delete
+                                            </button>
                                             <br/>
                                             <Image imgSrc={imgUrl} />
                                         </Box>
@@ -350,12 +355,18 @@ export default function Setup() {
                                 onChange={(e)=>handleFileUpload(e, 5)}
                                 multiple
                             />
+
+                            <input placeholder='Enter video titles seperated by comma'
+                                onChange={(e)=>setVideoTitle(e.target.value)}
+                            />
+
                             <button onClick={uploadVideos}
                             style={{padding:'15px', color:'#fff', borderRadius:'5px', background:"green"}}
                             >Upload Videos</button>
                     
-                    <br/>
-                    <br/>
+                            <br/>
+                            <br/>
+
                             <Typography variant='h5' className="banner-title">Videos</Typography>
                             <Box sx={{display:'flex', background:'#fff', padding:'20px',  
                             justifyContent:'space-around', 
@@ -374,10 +385,11 @@ export default function Setup() {
                                             >delete</button>
                                             <video width="300" controls>
                                                 <source
-                                                src={vidUrl}
+                                                src={vidUrl.url}
                                                 type="video/mp4"
                                                 />
                                             </video>
+                                            <p>{vidUrl.title}</p>
                                         </Box>
                                     ))
                                 }

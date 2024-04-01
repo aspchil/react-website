@@ -19,7 +19,7 @@ async function uploadImageAsPromise(file, path) {
         "state_changed",
         function progress(snapshot) {
           const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(percentage);
+          console.log("Uploading: ", percentage.toFixed(2), "%");
         },
 
         function error(err) {
@@ -68,7 +68,7 @@ export const useFirebase = (docId) => {
 
   
 
-const handleMultipleUpload = (files, position) => {
+const handleMultipleUpload = (files, position, videoTitle="") => {
     const promises = [];
     for(const file of files){//Instead of e.target.files, you could also have your files variable
         promises.push(uploadImageAsPromise(file, position))
@@ -79,10 +79,16 @@ const handleMultipleUpload = (files, position) => {
         //Once all the promises are resolved, you will get the urls in a array.
         console.log(fileURLS)
         const data = snapshot?.data();
-        const prevData = data[position];
+        const prevData = data[position]; 
+        let urls = fileURLS;
+        if(position === "videos"){
+          const titles = videoTitle.split(",").map( (t) => t.trim() )
+          const videoUrlObjects = fileURLS.map((url, index) => ({url, title: titles[index] || ""}))
+          urls = videoUrlObjects;
+        }
           const update = {
             ...data,
-            [position]: [...fileURLS, ...prevData],
+            [position]: [...urls, ...prevData],
           };
           updateDoc(update);
     })

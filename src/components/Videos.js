@@ -31,12 +31,13 @@ export default function Videos({videos}) {
                             {arr.map((vid, index) => {
                                 return (
                                     <Grid item md={4} key={index}>
-                                        <video width="300" controls>
-                                        <source
-                                        src={vid}
-                                        type="video/mp4"
-                                        />
-                                    </video>
+                                        <video width="300" height="250" controls>
+                                            <source
+                                                src={vid.url}
+                                                type="video/mp4"
+                                            />
+                                        </video>
+                                        <p>{vid.title}</p>
                                     </Grid>
                                 );
                             })}
