@@ -37,7 +37,7 @@ const App = () => {
                         
                 <Routes>
                     <Route path="/" exact element={<HomeWrapper />} />
-                    <Route path="/setup" exact element={<Setup />} />
+                    <Route path="/setup" element={<Setup />} />
                 </Routes>
             </ErrorBoundary>
             </ThemeProvider>
