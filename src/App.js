@@ -1,4 +1,4 @@
-import { React } from 'react'
+import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { 
     HomeWrapper,
@@ -22,7 +22,8 @@ const App = () => {
     };
 
     return (
-        <BrowserRouter>
+        <React.StrictMode>
+        
         <ThemeProvider theme={theme}>
             <ErrorBoundary
                 fallback={clearError => (
@@ -34,14 +35,16 @@ const App = () => {
                     />
                 )}
                 > 
-                        
+                <BrowserRouter>   
                 <Routes>
                     <Route path="/" exact element={<HomeWrapper />} />
                     <Route path="/setup" element={<Setup />} />
                 </Routes>
+                </BrowserRouter>
             </ErrorBoundary>
             </ThemeProvider>
-        </BrowserRouter>
+        
+        </React.StrictMode>
     );
 }
 
