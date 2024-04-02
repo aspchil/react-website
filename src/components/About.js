@@ -10,8 +10,8 @@ export default function About({isMobile}) {
                 <br/>
                 <Grid container display={'flex'} height={'auto'} justifyContent={`${isMobile ? 'space-between' : 'space-around'}`}>
                     <Grid item>
-                        <Typography className="about-text">Age • Birthday ............  27 • April 13</Typography>
-                        <Typography className="about-text">Height ............ 5'3"</Typography>
+                        <Typography className="about-text">Age • Birthday ............  20 • Nov 2005</Typography>
+                        <Typography className="about-text">Height ............ 5'0"</Typography>
                         <Typography className="about-text">Intimates ............ 38G • Hourglass</Typography>
                         <Typography className="about-text">Dress ............ 2-3 • small</Typography>
                         <Typography className="about-text">Shoe ............ 5</Typography>
