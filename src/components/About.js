@@ -20,7 +20,7 @@ export default function About({isMobile}) {
                     <Grid item >
                         <Typography className="about-text">Star Sign ............  Sagitarius</Typography>
                         <Typography className="about-text">Music ...... Psychedelic rock, disco</Typography>
-                        <Typography className="about-text">Literature ...... Short story,  graphic novels</Typography>
+                        <Typography className="about-text">Literature ...... Porn,  graphic novels</Typography>
                         <Typography className="about-text">Cuisine: spanish</Typography>
                         <Typography className="about-text">Pastimes .....  burlesque, writing, video games,fuck</Typography>
                         <Typography className="about-text">Small Pleasures ...... , fresh flowers and fuck</Typography>
